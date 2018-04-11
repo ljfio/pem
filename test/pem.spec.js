@@ -118,6 +118,15 @@ describe('General Tests', function () {
         })
       })
 
+      it('create pkcs8 version of key', function (done) {
+        pem.createPkcs8(pkey.key, function (error, data) {
+          hlp.checkError(error)
+          expect(data).to.be.ok()
+          hlp.checkTmpEmpty()
+          done()
+        })
+      })
+
       it('create pkcs12 w/o password', function (done) {
         pem.createCertificate({
           clientKey: pkey.key,
